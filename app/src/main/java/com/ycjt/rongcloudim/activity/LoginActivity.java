@@ -37,7 +37,7 @@ public class LoginActivity extends Activity {
     private static String mSenderIdTest; //发送信息者ID
     private static String mSenderNameTest = "Oliver"; //发送信息者的昵称
     private static String mPortraitUriTest = "http://static.yingyonghui.com/screenshots/1657/1657011_5.jpg"; //获取发送信息者头像的url
-
+//    e7+rWjs5dFsQPgB3jvw6DtOZWjk4M23xC4EfGJHOqdmEfvwldLsziq0ee7vv6jTjZG6yWAKKb4oJjf6mwSa8gYcmcXs+hAUW
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
