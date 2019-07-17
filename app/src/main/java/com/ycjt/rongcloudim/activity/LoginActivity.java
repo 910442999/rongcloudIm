@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.ycjt.rongcloudim.BaseApplication;
 import com.ycjt.rongcloudim.DemoContext;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
+
 
 /**
  * Created by Bob on 15/8/19.
@@ -37,21 +39,43 @@ public class LoginActivity extends Activity {
     private static String mSenderIdTest; //发送信息者ID
     private static String mSenderNameTest = "Oliver"; //发送信息者的昵称
     private static String mPortraitUriTest = "http://static.yingyonghui.com/screenshots/1657/1657011_5.jpg"; //获取发送信息者头像的url
-//    e7+rWjs5dFsQPgB3jvw6DtOZWjk4M23xC4EfGJHOqdmEfvwldLsziq0ee7vv6jTjZG6yWAKKb4oJjf6mwSa8gYcmcXs+hAUW
+
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
-        Button btn = (Button) findViewById(R.id.bt1);
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        final EditText et1 = findViewById(R.id.et1);
+        final EditText et2 = findViewById(R.id.et2);
+        findViewById(R.id.bt1).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view) {
+                mSenderIdTest = et1.getText().toString();
+                mSenderNameTest = et2.getText().toString();
                 login();
             }
         });
+        findViewById(R.id.bt2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                token = "e7+rWjs5dFsQPgB3jvw6DtOZWjk4M23xC4EfGJHOqdmEfvwldLsziq0ee7vv6jTjZG6yWAKKb4oJjf6mwSa8gYcmcXs+hAUW";
+                connect(token);
+                SharedPreferences.Editor edit = DemoContext.getInstance().getSharedPreferences().edit();
+                edit.putString("DEMO_TOKEN", token);
+                edit.apply();
+            }
+        });
+        findViewById(R.id.bt3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                token = "/4LPidjLzNRSARPkayG7fgBl+4auiKt760DXm22Jj4VjcLtZ2JJ10GidebXdw/xri8GJ2y15rjtLqgG48aBQCtQT6VGHbb/u";
+                connect(token);
+                SharedPreferences.Editor edit = DemoContext.getInstance().getSharedPreferences().edit();
+                edit.putString("DEMO_TOKEN", token);
+                edit.apply();
+            }
+        });
+
     }
 
     /**
@@ -63,7 +87,7 @@ public class LoginActivity extends Activity {
 
             @Override
             protected String doInBackground(Void... params) {
-                mSenderIdTest = "17600328876";
+                //                mSenderIdTest = "17600328876";
 
                 return mSenderIdTest;
             }
@@ -80,6 +104,34 @@ public class LoginActivity extends Activity {
      * 通过服务器端请求获取token，客户端不提供获取token的接口
      */
     private void getToken() {
+        //1.直接用融云提供的后台sdk调用即可(导入jar包冲突暂时用工具类)
+        //        RongCloud rongCloud = RongCloud.getInstance("82hegw5u8xzrx", "q8lWfk95Ib2fdu");
+        //        User user = rongCloud.user;
+        //        /**
+        //         * API 文档: http://www.rongcloud.cn/docs/server_sdk_api/user/user.html#register
+        //         *
+        //         * 注册用户，生成用户在融云的唯一身份标识 Token
+        //         */
+        //        try {
+        //            UserModel userModel = new UserModel()
+        //                    .setId(mSenderIdTest)
+        //                    .setName(mSenderNameTest)
+        //                    .setPortrait(mPortraitUriTest);
+        //            TokenResult result = user.register(userModel);
+        //            token = result.getToken();
+        //            connect(token);
+        //            SharedPreferences.Editor edit = DemoContext.getInstance().getSharedPreferences().edit();
+        //            edit.putString("DEMO_TOKEN", token);
+        //            edit.apply();
+        //            Log.i(TAG, "获取的结果为:\n" + result.toString() + '\n');
+        //            Log.i(TAG, "获取的 token 值为:\n" + token + '\n');
+        //        } catch (Exception e) {
+        //            e.printStackTrace();
+        //            Log.i(TAG, "获取 token 失败" + '\n');
+        //        }
+
+        //2.封装的工具类
+
         FakeServer.getToken(mSenderIdTest, mSenderNameTest, mPortraitUriTest, new HttpUtil.OnResponse() {
             @Override
             public void onResponse(int code, String body) {

@@ -22,7 +22,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
-        android:text="yang115@qq.com" />
+        android:text="1234567890" />
 
     <EditText
         android:id="@+id/et2"
@@ -30,7 +30,7 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:text="123456" />
+        android:text="000000" />
 
     <Button
         android:id="@+id/bt1"
@@ -39,5 +39,23 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:text="登录" />
+
+     <Button
+        android:id="@+id/bt2"
+        android:layout_width="180dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:text="登录测试号1" />
+
+     <Button
+        android:id="@+id/bt3"
+        android:layout_width="180dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:text="登录测试号2" />
+
+
 
 </LinearLayout>
