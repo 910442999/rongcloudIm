@@ -5,6 +5,9 @@ import android.app.Application;
 import android.content.Context;
 
 import io.rong.imkit.RongIM;
+import io.rong.imlib.AnnotationNotFoundException;
+import io.rong.imlib.RongIMClient;
+import io.rong.message.FileMessage;
 
 public class BaseApplication extends Application {
     @Override
@@ -28,6 +31,20 @@ public class BaseApplication extends Application {
                 DemoContext.init(this);
             }
         }
+
+//        /**
+//         * 用于自定义消息的注册, 注册后方能正确识别自定义消息, 建议在init后及时注册，保证自定义消息到达时能正确解析。
+//         */
+//        try {
+//            RongIMClient.registerMessageType(FileMessage.class);
+//            RongIMClient.registerMessageType(CustomizeMessage.class);
+//        } catch (AnnotationNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//        AppContext.getInstance().init(getApplicationContext());
+//        AppContext.getInstance().registerReceiveMessageListener();
+
     }
 
     /**
