@@ -179,6 +179,8 @@ public class UserTask {
             @Override
             protected LiveData<Result<UserInfo>> createCall() {
 //                return userService.getUserInfo(userId);
+                LiveData<Result<UserInfo>> userInfo = new MediatorLiveData<>();
+                UserInfo userInfo1 = new UserInfo();
 
                 return null;
             }

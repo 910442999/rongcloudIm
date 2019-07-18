@@ -49,7 +49,15 @@
                 android:id="@+id/bt6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="加入群组" />
+                android:text="语音通话" />
+
+            <Button
+                android:id="@+id/bt7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="视频通话" />
+
+
         </LinearLayout>
 
     </ScrollView>

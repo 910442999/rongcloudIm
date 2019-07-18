@@ -107,13 +107,13 @@ public class IMManager {
         this.context = context.getApplicationContext();
 
         // 初始化推送
-        initPush();
+//        initPush();
 
         // 调用 RongIM 初始化
         initRongIM(context);
 
         // 初始化用户和群组信息内容提供者
-//        initInfoProvider(context);
+        initInfoProvider(context);
 
         // 初始化自定义消息和消息模版
         initMessageAndTemplate();
@@ -693,7 +693,7 @@ public class IMManager {
         //RongIM.init(this);
 
         // 可在初始 SDK 时直接带入融云 IM 申请的APP KEY
-        RongIM.init(context, "n19jmcy59f1q9", true);
+        RongIM.init(context, "82hegw5u8xzrx", true);
 
         //        RongIM.init(context, "kj7swf8o7dot2", true);
 

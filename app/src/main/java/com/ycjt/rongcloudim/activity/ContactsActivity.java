@@ -31,7 +31,7 @@ public class ContactsActivity extends Activity implements AdapterView.OnItemClic
     /**
      * ids 收消息人的 id
      */
-    String[] ids = {"56145", "56146", "56147", "56148"};
+    String[] ids = {"123456789", "1234567890"};
     List mLists = new ArrayList();
 
     @Override

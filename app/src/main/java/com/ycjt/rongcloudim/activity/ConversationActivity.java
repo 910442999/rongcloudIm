@@ -60,8 +60,9 @@ public class ConversationActivity extends FragmentActivity {
         mTargetId = intent.getData().getQueryParameter("targetId");
         mTargetIds = intent.getData().getQueryParameter("targetIds");
         //intent.getData().getLastPathSegment();//获得当前会话类型
-        mConversationType = Conversation.ConversationType.valueOf(intent.getData().getLastPathSegment().toUpperCase(Locale.getDefault()));
-
+//        mConversationType = Conversation.ConversationType.valueOf(intent.getData().getLastPathSegment().toUpperCase(Locale.getDefault()));
+        mConversationType = Conversation.ConversationType.valueOf(intent.getData()
+                .getLastPathSegment().toUpperCase(Locale.US));
         enterFragment(mConversationType, mTargetId);
         setActionBarTitle(mTargetId);
     }

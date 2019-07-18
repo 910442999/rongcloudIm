@@ -22,7 +22,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
-        android:text="1234567890" />
+        android:hint="账号" />
 
     <EditText
         android:id="@+id/et2"
@@ -30,7 +30,7 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:text="000000" />
+        android:hint="昵称" />
 
     <Button
         android:id="@+id/bt1"

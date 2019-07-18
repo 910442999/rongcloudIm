@@ -58,11 +58,16 @@ public class LoginActivity extends Activity {
         findViewById(R.id.bt2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                token = "e7+rWjs5dFsQPgB3jvw6DtOZWjk4M23xC4EfGJHOqdmEfvwldLsziq0ee7vv6jTjZG6yWAKKb4oJjf6mwSa8gYcmcXs+hAUW";
+                token = "QnLlEU4IKnoIv1f6riHSndOZWjk4M23xC4EfGJHOqdnRiIRg2+nFKG8cDkKFbz+7PGYU2j5R7+VkHmcmkIk1xw==";
                 connect(token);
                 SharedPreferences.Editor edit = DemoContext.getInstance().getSharedPreferences().edit();
                 edit.putString("DEMO_TOKEN", token);
                 edit.apply();
+                SharedPreferences.Editor DEMO_USERID = DemoContext.getInstance().getSharedPreferences().edit();
+                DEMO_USERID.putString("DEMO_USERID", "1234567890");
+                DEMO_USERID.apply();
+
+
             }
         });
         findViewById(R.id.bt3).setOnClickListener(new View.OnClickListener() {
@@ -73,6 +78,11 @@ public class LoginActivity extends Activity {
                 SharedPreferences.Editor edit = DemoContext.getInstance().getSharedPreferences().edit();
                 edit.putString("DEMO_TOKEN", token);
                 edit.apply();
+
+                SharedPreferences.Editor DEMO_USERID = DemoContext.getInstance().getSharedPreferences().edit();
+                DEMO_USERID.putString("DEMO_USERID", "123456789");
+                DEMO_USERID.apply();
+
             }
         });
 
@@ -206,4 +216,10 @@ public class LoginActivity extends Activity {
             });
         }
     }
+
+    //下面三个为好友列表四个账号中的三个账号信息，分别为:用户userid，token，登录邮箱，密码，昵称
+
+    //    {"code":200,"userId":"123456789","token":"QnLlEU4IKnoIv1f6riHSndOZWjk4M23xC4EfGJHOqdnRiIRg2+nFKG8cDkKFbz+7PGYU2j5R7+VkHmcmkIk1xw=="}
+    //    {"code":200,"userId":"1234567890","token":"/4LPidjLzNRSARPkayG7fgBl+4auiKt760DXm22Jj4VjcLtZ2JJ10GidebXdw/xri8GJ2y15rjtLqgG48aBQCtQT6VGHbb/u"}
+
 }

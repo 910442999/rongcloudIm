@@ -1,15 +1,16 @@
 package com.ycjt.rongcloudim.db.dao;
 
-import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
+
+import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
+import android.arch.persistence.room.Query;
+
+import com.ycjt.rongcloudim.db.model.GroupEntity;
+import com.ycjt.rongcloudim.model.SearchGroupMember;
 
 import java.util.List;
-
-import cn.rongcloud.im.db.model.GroupEntity;
-import cn.rongcloud.im.ui.adapter.models.SearchGroupMember;
 
 @Dao
 public interface GroupDao {

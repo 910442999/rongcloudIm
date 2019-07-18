@@ -4,6 +4,9 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 
+import com.ycjt.rongcloudim.common.ErrorCode;
+import com.ycjt.rongcloudim.im.IMManager;
+
 import io.rong.imkit.RongIM;
 import io.rong.imlib.AnnotationNotFoundException;
 import io.rong.imlib.RongIMClient;
@@ -21,10 +24,17 @@ public class BaseApplication extends Application {
         if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
                 "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
 
-            /**
-             * IMKit SDK调用第一步 初始化
+            ErrorCode.init(this);
+
+//            /**
+//             * IMKit SDK调用第一步 初始化
+//             */
+//            RongIM.init(this, "82hegw5u8xzrx", true);
+            /*
+             * 以下部分仅在主进程中进行执行
              */
-            RongIM.init(this, "82hegw5u8xzrx", true);
+            // 初始化融云IM SDK，初始化 SDK 仅需要在主进程中初始化一次
+            IMManager.getInstance().init(this);
 
             if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext()))) {
 
@@ -72,41 +82,6 @@ public class BaseApplication extends Application {
     }
 }
 
-//下面三个为好友列表四个账号中的三个账号信息，分别为:用户userid，token，登录邮箱，密码，昵称
 
 
-/**
- * 56146
- * rjlNearK6Qzu3MxMbMrQPLI6ZiT8q7s0UEaMPWY0lMwZFCr6nvpDtW4C3cjQ9tv4cIQMvwbkJb6xzmBRkFjv+Q==
- * 112@rongcloud.com
- * 123456
- * rongcloud112
- * <p>
- * 56147
- * ke0BCyqQnwWiagWoS1ckzrI6ZiT8q7s0UEaMPWY0lMwZFCr6nvpDtX2/KvQEWEDo6r3YdoOyCDqUgN53uY4SEA==
- * 113@rongcloud.com
- * 123456
- * rongcloud113
- * <p>
- * 56148
- * mYLERi6S6fkqdGjEIJrEubI6ZiT8q7s0UEaMPWY0lMwZFCr6nvpDtQIt9svl5Wir1X0Zf3Hy5T1QRLmZJrAbgQ==
- * 114@rongcloud.com
- * 123456
- * rongcloud114
- */
 
-/**
- * 56147
- * ke0BCyqQnwWiagWoS1ckzrI6ZiT8q7s0UEaMPWY0lMwZFCr6nvpDtX2/KvQEWEDo6r3YdoOyCDqUgN53uY4SEA==
- * 113@rongcloud.com
- * 123456
- * rongcloud113
- */
-
-/**
- * 56148
- * mYLERi6S6fkqdGjEIJrEubI6ZiT8q7s0UEaMPWY0lMwZFCr6nvpDtQIt9svl5Wir1X0Zf3Hy5T1QRLmZJrAbgQ==
- * 114@rongcloud.com
- * 123456
- * rongcloud114
- */

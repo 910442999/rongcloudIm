@@ -18,7 +18,7 @@ public class FakeServer {
     private static final String APP_SECRET = "q8lWfk95Ib2fdu";
 
     /**
-     * 获取融云Token, 通过调用融云ServerApi获得
+     * 获取融云Token, 通过调用融云ServerApi获得 也可集成sdk获取
      */
     public static void getToken(String userId, String userName, String userPortrait, HttpUtil.OnResponse callback) {
         try {

@@ -2,6 +2,7 @@ package com.ycjt.rongcloudim.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.*;
@@ -13,8 +14,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ycjt.rongcloudim.DemoContext;
 import com.ycjt.rongcloudim.R;
 
+import io.rong.callkit.RongCallKit;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Conversation;
 
@@ -34,6 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBut4 = (Button) findViewById(R.id.bt4);
         mBut5 = (Button) findViewById(R.id.bt5);
         mBut6 = (Button) findViewById(R.id.bt6);
+        Button bt7 = (Button) findViewById(R.id.bt7);
         mBackImg = (ImageView) findViewById(R.id.img1);
         mTitle = (TextView) findViewById(R.id.txt1);
 
@@ -46,15 +50,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBut4.setOnClickListener(this);
         mBut5.setOnClickListener(this);
         mBut6.setOnClickListener(this);
+        bt7.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-
+        String targetId = DemoContext.getInstance().getSharedPreferences().getString("DEMO_USERID", "default");
         switch (v.getId()) {
             case R.id.bt2:
                 if (RongIM.getInstance() != null)
-                    RongIM.getInstance().startPrivateChat(MainActivity.this, "26594", "title");
+                    RongIM.getInstance().startPrivateChat(MainActivity.this, targetId, "title");
+                //                    RongIM.getInstance().startConversation(MainActivity.this ,Conversation.ConversationType.PRIVATE , userid, "title");
                 break;
             case R.id.bt3:
                 if (RongIM.getInstance() != null)
@@ -67,6 +73,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.bt5:
                 startActivity(new Intent(MainActivity.this, ContactsActivity.class));
                 break;
+            case R.id.bt6:
+                RongCallKit.startSingleCall(MainActivity.this, targetId, RongCallKit.CallMediaType.CALL_MEDIA_TYPE_AUDIO);
+                break;
+            case R.id.bt7:
+                RongCallKit.startSingleCall(MainActivity.this, targetId, RongCallKit.CallMediaType.CALL_MEDIA_TYPE_VIDEO);
+                break;
+
+
         }
     }
 
